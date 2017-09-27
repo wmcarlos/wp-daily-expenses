@@ -153,15 +153,20 @@ class menu_page{
 	}
 
 	public function menu_pages(){
-		//add_menu_page('Daily Expense','Daily Expense','manage_options','my-menu','my_menu_output');
-		//add_submenu_page('my-menu','Bank','bank','manage_options','my-menu');
-
-		add_menu_page('Daily Expense', 'Daily Expense', 'manage_options', 'my-menu', 'my_menu_output' );
-    	add_submenu_page('my-menu', 'Banks', 'Banks', 'manage_options', 'my-menu', 'my_menu_output' );
-    	add_submenu_page('my-menu', 'Expense Category', 'Expense Category', 'manage_options', 'my-menu' );
+		add_menu_page('Daily Expense', 'Daily Expense', 'manage_options', 'daily-expense', 'daily_expense_fn' );
+    	add_submenu_page('daily-expense','Banks', 'Banks', 'manage_options', 'banks', 'banks', 'banks_fn' );
+    	add_submenu_page('daily-expense','Expense Category', 'Expense Category', 'manage_options', 'expense-category','expense_category_fn');
 	}
 
-	public function my_menu_output(){
+	public function daily_expense_fn(){
+		print "Hello World";
+	}
+
+	public function banks_fn(){
+		print "Hello World";
+	}
+
+	public function expense_category_fn(){
 		print "Hello World";
 	}
 }
