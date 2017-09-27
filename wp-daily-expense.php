@@ -23,7 +23,7 @@
 
 
 // Plugin version
-if ( ! defined('DAILY_EXPENSES_VERSION' ) ) define('DAILY_EXPENSES_VERSION', '1.0' ); 
+/*if ( ! defined('DAILY_EXPENSES_VERSION' ) ) define('DAILY_EXPENSES_VERSION', '1.0' ); 
 
 if ( ! class_exists( 'DAILY_EXPENSES' ) ) :
 
@@ -117,4 +117,53 @@ function getClassDailyExpenses() {
 	return $daily_expense;
 }
 
-getClassDailyExpenses();
+getClassDailyExpenses();*/
+
+
+/*class option_page{
+	public function __construct(){
+		add_action('admin_menu',array($this,'admin_menu'));
+	}
+
+	public function admin_menu() {
+		add_options_page(
+			'Page Title',
+			'Circle Tree Login',
+			'manage_options',
+			'options_page_slug',
+			array(
+				$this,
+				'settings_page'
+			)
+		);
+	}
+
+	public function  settings_page() {
+		print plugin_dir_path(__FILE__)."<br/>";
+		print plugin_dir_url(__FILE__)."<br/>";
+		print __FILE__;
+	}
+}
+
+new option_page();*/
+
+class menu_page{
+	public function __construct(){
+		add_action('admin_menu',array($this,'menu_pages'));
+	}
+
+	public function menu_pages(){
+		//add_menu_page('Daily Expense','Daily Expense','manage_options','my-menu','my_menu_output');
+		//add_submenu_page('my-menu','Bank','bank','manage_options','my-menu');
+
+		add_menu_page('Daily Expense', 'Daily Expense', 'manage_options', 'my-menu', 'my_menu_output' );
+    	add_submenu_page('my-menu', 'Banks', 'Banks', 'manage_options', 'my-menu', 'my_menu_output' );
+    	add_submenu_page('my-menu', 'Expense Category', 'Expense Category', 'manage_options', 'my-menu' );
+	}
+
+	public function my_menu_output(){
+		print "Hello World";
+	}
+}
+
+new menu_page();
