@@ -36,20 +36,20 @@ class DAILY_EXPENSES {
         return self::$instance;
 	}
 	function __construct() {
+
 		$this->setupGlobals();
 		$this->includes();
 		$this->loadTextDomain();
-		
 	}
+
 	private function includes() {
-		//API REST CPANEL
-		require_once DAILY_EXPENSES_PLUGIN_DIR.'includes/voices_postype_assistence.php';
-		require_once DAILY_EXPENSES_PLUGIN_DIR.'includes/scripts.php';
+
+		require_once DAILY_EXPENSES_PLUGIN_DIR . 'includes/daily_expense_page_setting.php';
+
+		//require_once DAILY_EXPENSES_PLUGIN_DIR.'includes/voices_postype_assistence.php';
+		//require_once DAILY_EXPENSES_PLUGIN_DIR.'includes/scripts.php';
 		//Shortcode
-		require_once DAILY_EXPENSES_PLUGIN_DIR.'includes/voices_shortcode_assistence.php';
-
-		do_action('wpemails_cpve_include_files');
-
+		//require_once DAILY_EXPENSES_PLUGIN_DIR.'includes/voices_shortcode_assistence.php';
 	}
 	
 	private function setupGlobals() {
@@ -108,11 +108,13 @@ class DAILY_EXPENSES {
 endif; // End if class_exists check
 
 $daily_expense = null;
-function getClassdaily_expenses() {
+
+function getClassDailyExpenses() {
 	global $daily;
 	if (is_null($daily_expense)) {
 		$daily_expense = DAILY_EXPENSES::getInstance();
 	}
 	return $daily_expense;
 }
-getClassdaily_expenses();
+
+getClassDailyExpenses();
